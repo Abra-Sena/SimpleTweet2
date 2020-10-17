@@ -8,6 +8,7 @@ import android.os.Parcel;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -24,12 +25,14 @@ import okhttp3.Headers;
 public class ComposeActivity extends AppCompatActivity {
 
     public static final String TAG = "ComposeActivity";
-    public  static  final  int MAX_TWEET_LENGTH = 280;
+    public  static  final  int MAX_TWEET_LENGTH = 140;
 
     EditText etCompose;
     Button btnTweet;
 
     TwitterClient client;
+    Toast toast;
+    View toastView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,40 +44,29 @@ public class ComposeActivity extends AppCompatActivity {
         etCompose = findViewById(R.id.etCompose);
         btnTweet = findViewById(R.id.btnTweet);
 
-//
-//        // handle tweet length
-//        etCompose.addTextChangedListener(new TextWatcher() {
-//            @Override
-//            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-//                // fires right as the text is being changed (even supplies the range of text)
-//            }
-//
-//            @Override
-//            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-//                // fires right before text is changing
-//            }
-//
-//            @Override
-//            public void afterTextChanged(Editable editable) {
-//                // fires right after the text has changed
-////                etCompose.setText(editable.toString());
-//            }
-//        });
-
         //set click listener on button
         btnTweet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String tweetContent = etCompose.getText().toString();
                 if(tweetContent.isEmpty()) {
-                    Toast.makeText(ComposeActivity.this, "Sorry, your tweet can not be empty", Toast.LENGTH_SHORT).show();
+                    toast = Toast.makeText(ComposeActivity.this, "Sorry, your tweet can not be empty", Toast.LENGTH_SHORT);
+                    toast.setGravity(Gravity.CENTER|Gravity.CENTER, 0, 0);
+                    toastView = toast.getView();
+                    toastView.setBackgroundResource(R.drawable.error_toast_background);
+                    toast.show();
                     return;
                 }
                 if(tweetContent.length() > MAX_TWEET_LENGTH) {
-                    Toast.makeText(ComposeActivity.this, "Sorry, your tweet is too long", Toast.LENGTH_SHORT).show();
+                    toast = Toast.makeText(ComposeActivity.this, "Sorry, your tweet is too long", Toast.LENGTH_SHORT);
+                    toast.setGravity(Gravity.CENTER|Gravity.CENTER, 0, 0);
+
+                    toastView = toast.getView();
+                    toastView.setBackgroundResource(R.drawable.toast_background);
+                    toast.show();
                     return;
                 }
-                Toast.makeText(ComposeActivity.this, tweetContent, Toast.LENGTH_SHORT).show();
+//                Toast.makeText(ComposeActivity.this, tweetContent, Toast.LENGTH_SHORT).show();
                 //make an API call to Twitter to publish the tweet
                 client.publishTweet(tweetContent, new JsonHttpResponseHandler() {
                     @Override

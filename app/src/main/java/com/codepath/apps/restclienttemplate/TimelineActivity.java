@@ -141,7 +141,7 @@ public class TimelineActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         if(item.getItemId() == R.id.compose) {
             //compose icon has been selected
-            Toast.makeText(this, "Compose!", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(this, "Compose!", Toast.LENGTH_SHORT).show();
             //navigate to the compose activity
             Intent intent = new Intent(this, ComposeActivity.class);
             startActivityForResult(intent, REQUEST_CODE);
@@ -155,7 +155,7 @@ public class TimelineActivity extends AppCompatActivity {
         if(requestCode == REQUEST_CODE && resultCode == RESULT_OK) {
             //get data from the intent (here the tweet object)
             Tweet tweet = Parcels.unwrap(data.getParcelableExtra("tweet"));
-            //update the recycler view with the new tweet
+            /* update the recycler view with the new tweet in two steps */
             //modify data source of tweets
             tweets.add(0, tweet);
             //update the adapter

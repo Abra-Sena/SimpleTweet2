@@ -49,6 +49,7 @@ public class TwitterClient extends OAuthBaseClient {
 		RequestParams params = new RequestParams();
 		params.put("count", 20);
 		params.put("since_id", 1);
+		params.put("media_ids", true);
 		client.get(apiUrl, params, handler);
 	}
 
