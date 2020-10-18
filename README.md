@@ -37,8 +37,9 @@ The following **additional** features are implemented:
 
 Here's a walkthrough of implemented user stories:
 
-<img src="Unit4.gif" width=250 title="unit4" alt="unit4"><br>
-<img src="User_login.gif" width=250 title="authentification" alt="oauth"><br>
+<img src="user_auth.gif" width=250 title="unit4" alt="unit4">
+<img src="unit4_walkthrough.gif" width=250 title="unit4" alt="unit4">
+<img src="offline_access.gif" width=250 title="authentification" alt="oauth">
 
 GIF created with [Kap](https://getkap.co).
 
