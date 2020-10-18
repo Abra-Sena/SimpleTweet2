@@ -4,7 +4,7 @@
 
 ## Submission 2
 
-Time spent: **25** hours spent in total
+Time spent: **30** hours spent in total
 
 ## User Stories
 
@@ -37,9 +37,7 @@ The following **additional** features are implemented:
 
 Here's a walkthrough of implemented user stories:
 
-<img src="user_auth.gif" width=250 title="unit4" alt="unit4">
-<img src="unit4_walkthrough.gif" width=250 title="unit4" alt="unit4">
-<img src="offline_access.gif" width=250 title="authentification" alt="oauth">
+<img src="user_auth.gif" width=250 title="oauth" alt="oauth"> <img src="unit4_walkthrough.gif" width=250 title="walkthrough" alt="walkthrough"> <img src="offline_access.gif" width=250 title="offline" alt="offline">
 
 GIF created with [Kap](https://getkap.co).
 
